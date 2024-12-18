@@ -80,6 +80,23 @@ class RoleController extends Controller
                         $role_menus[] = md5($sub->sbmn_id).'-view';
                     }
                 }
+                // actions
+                if($menu->rlmn_create)
+                {
+                    $role_menus[] = md5($menu->mn_id).'-create';
+                }
+                if($menu->rlmn_update)
+                {
+                    $role_menus[] = md5($menu->mn_id).'-update';
+                }
+                if($menu->rlmn_destroy)
+                {
+                    $role_menus[] = md5($menu->mn_id).'-delete';
+                }
+                if($menu->rlmn_view)
+                {
+                    $role_menus[] = md5($menu->mn_id).'-view';
+                }
             }
 
             $data = [

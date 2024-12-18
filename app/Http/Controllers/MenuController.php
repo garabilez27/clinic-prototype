@@ -25,10 +25,10 @@ class MenuController extends Controller
 
         // get list
         $search = isset($inputs['search']) ? $inputs['search'] : '';
-        $menus = Menus::where('mn_deleted', 0);
+        $menus = Menus::where('mn_deleted', 0)->orderBy('mn_sequence', 'asc');
         if(!empty($inputs['search']))
         {
-            $menus = Menus::where('mn_deleted', 0)->whereRaw('mn_detail like ?', '%'.$search.'%');
+            $menus = Menus::where('mn_deleted', 0)->whereRaw('mn_detail like ?', '%'.$search.'%')->orderBy('mn_sequence', 'asc');
         }
 
         // Generate data

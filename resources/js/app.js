@@ -171,6 +171,25 @@ if(roleUpdateBtns.length > 0) {
     }
 }
 
+// Get all elements with the 'sub-menu-form' class
+const patientUpdateBtns = document.getElementsByClassName('patient-form');
+if(patientUpdateBtns.length > 0) {
+    for (let i = 0; i < patientUpdateBtns.length; i++) {
+        patientUpdateBtns[i].addEventListener('click', async function() {
+            const url = 'http://127.0.0.1:8000/api/v1/patients/' + this.value;
+            const data = await fetchData(url);
+
+            // Fill the menu update form
+            document.getElementById('e-fname').value = data['firstname'];
+            document.getElementById('e-lname').value = data['lastname'];
+            document.getElementById('e-email').value = data['email'];
+            document.getElementById('e-phone').value = data['phone'];
+            document.getElementById('update').value = data['id'];
+            document.getElementById('e-delete').value = data['id'];
+        });
+    }
+}
+
 // Modify fetchData to return a Promise
 function fetchData(apiUrl) {
     return new Promise((resolve, reject) => {

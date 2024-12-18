@@ -8,6 +8,7 @@ use App\Http\Middleware\Guest;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SubMenuController;
@@ -15,6 +16,15 @@ use App\Http\Controllers\SubMenuController;
 Route::middleware(Authorized::class)->group(function() {
     Route::get('/terminate', [LoginController::class, 'logout'])->name('signout');
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Menus
+    Route::prefix('patients')->group(function() {
+        Route::get('/', [PatientController::class, 'index'])->name('ptt.index');
+
+        Route::post('/create', [PatientController::class, 'create'])->name('ptt.create');
+        Route::post('/delete', [PatientController::class, 'destroy'])->name('ptt.delete');
+        Route::post('/update', [PatientController::class, 'update'])->name('ptt.update');
+    });
 
     Route::prefix('settings')->group(function() {
         Route::get('/', [SettingController::class, 'index'])->name('settings');
