@@ -64,7 +64,7 @@ abstract class Controller
         }
 
         // Menu have no branch
-        if(!$user->menus[$root]['branched'] || empty($prefix))
+        if((!$user->menus[$root]['branched'] && !isset($user->menus[$root]['subs'])) || empty($prefix))
         {
             return '';
         }
