@@ -34,6 +34,13 @@ class SubMenuSeeder extends Seeder
                 'sbmn_icon' => 'fa-user-tag',
                 'mn_id' => 'MN00002',
             ],
+            [
+                'sbmn_id' => 'SBMN00004',
+                'sbmn_detail' => 'Values',
+                'sbmn_reference' => 'val.index',
+                'sbmn_icon' => 'fa-circle',
+                'mn_id' => 'MN00002',
+            ],
         ]);
     }
 }

@@ -7,10 +7,12 @@ use App\Http\Resources\MenuResource;
 use App\Http\Resources\PatientResource;
 use App\Http\Resources\RoleResource;
 use App\Http\Resources\SubMenuResource;
+use App\Http\Resources\ValueResource;
 use App\Models\Menus;
 use App\Models\Patients;
 use App\Models\Roles;
 use App\Models\SubMenus;
+use App\Models\Values;
 
 Route::middleware(Authorized::class)->group(function() {
     Route::prefix('api')->group(function() {
@@ -45,13 +47,23 @@ Route::middleware(Authorized::class)->group(function() {
                 });
             });
 
-            // Role API
+            // Patient API
             Route::prefix('patients')->group(function() {
                 Route::get('/', function() {
                     return PatientResource::collection(Patients::paginate());
                 });
                 Route::get('/{id}', function(string $id) {
                     return new PatientResource(Patients::whereRaw('md5(ptt_id) = ?', $id)->first());
+                });
+            });
+
+            // Value API
+            Route::prefix('values')->group(function() {
+                Route::get('/', function() {
+                    return ValueResource::collection(Values::paginate());
+                });
+                Route::get('/{id}', function(string $id) {
+                    return new ValueResource(Values::whereRaw('md5(val_id) = ?', $id)->first());
                 });
             });
         });

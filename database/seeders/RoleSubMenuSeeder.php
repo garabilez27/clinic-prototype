@@ -14,7 +14,7 @@ class RoleSubMenuSeeder extends Seeder
     {
         DB::table('tbl_role_sub_menus')->insert([
             [
-                'rlmn_id' => '2',
+                'rlmn_id' => '3',
                 'sbmn_id' => 'SBMN00001',
                 'rsm_create' => 1,
                 'rsm_update' => 1,
@@ -22,7 +22,7 @@ class RoleSubMenuSeeder extends Seeder
                 'rsm_view' => 1,
             ],
             [
-                'rlmn_id' => '2',
+                'rlmn_id' => '3',
                 'sbmn_id' => 'SBMN00002',
                 'rsm_create' => 1,
                 'rsm_update' => 1,
@@ -30,8 +30,16 @@ class RoleSubMenuSeeder extends Seeder
                 'rsm_view' => 1,
             ],
             [
-                'rlmn_id' => '2',
+                'rlmn_id' => '3',
                 'sbmn_id' => 'SBMN00003',
+                'rsm_create' => 1,
+                'rsm_update' => 1,
+                'rsm_destroy' => 1,
+                'rsm_view' => 1,
+            ],
+            [
+                'rlmn_id' => '3',
+                'sbmn_id' => 'SBMN00004',
                 'rsm_create' => 1,
                 'rsm_update' => 1,
                 'rsm_destroy' => 1,
